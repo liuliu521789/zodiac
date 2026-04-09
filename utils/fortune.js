@@ -579,7 +579,7 @@ async function getFortune(zodiacId) {
   try {
     const data = await fetchFortuneData();
     const zodiacData = data.zodiacs[zodiacId];
-    const zodiacInfo = zodiacList.find(z => z.id === zodiacId);
+    let zodiacInfo = zodiacList.find(z => z.id === zodiacId);
     
     if (zodiacData) {
       // 根据红黑榜确定风格
@@ -606,7 +606,9 @@ async function getFortune(zodiacId) {
     }
     
     // 返回默认数据
-    const zodiacInfo = zodiacList.find(z => z.id === zodiacId);
+    if (!zodiacInfo) {
+      zodiacInfo = zodiacList.find(z => z.id === zodiacId);
+    }
     let style;
     if (['龙', '牛', '猴'].includes(zodiacInfo.name)) {
       style = 'style3';
@@ -622,7 +624,9 @@ async function getFortune(zodiacId) {
   } catch (error) {
     console.error('获取运势失败:', error);
     // 使用默认风格
-    const zodiacInfo = zodiacList.find(z => z.id === zodiacId);
+    if (!zodiacInfo) {
+      zodiacInfo = zodiacList.find(z => z.id === zodiacId);
+    }
     let style;
     if (['龙', '牛', '猴'].includes(zodiacInfo.name)) {
       style = 'style3';
