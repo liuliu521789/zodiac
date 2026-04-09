@@ -518,6 +518,131 @@ async function fetchFortuneData() {
   }
   
   try {
+    // 尝试从本地缓存获取
+    const localData = wx.getStorageSync('fortune_data');
+    const localTime = wx.getStorageSync('last_fetch_time');
+    
+    if (localData && (now - localTime) < CACHE_DURATION) {
+      cachedData = localData;
+      lastFetchTime = localTime;
+      return cachedData;
+    }
+    
+    // 开发阶段使用本地数据
+    // 注意：发布前需要删除这段代码，使用网络请求
+    const defaultData = {
+      date: '2026年4月9日',
+      red_list: ['龙', '牛', '猴'],
+      black_list: ['蛇', '马', '羊'],
+      zodiacs: {
+        rat: {
+          overall: '鼠宜保持乐观，稳步前行',
+          love: '感情稳定，适合与伴侣增进感情',
+          career: '事业运一般，宜稳扎稳打',
+          wealth: '财运平稳，宜理性消费',
+          health: '健康状况良好，注意休息',
+          tip: '属鼠的朋友今日宜保持平常心，稳扎稳打'
+        },
+        ox: {
+          overall: '牛宜积极进取，把握机遇',
+          love: '感情升温，适合表达心意',
+          career: '机会增多，宜积极争取',
+          wealth: '财运不错，可能有额外收入',
+          health: '健康状况良好，适当运动',
+          tip: '属牛的朋友今日运势良好，宜主动出击'
+        },
+        tiger: {
+          overall: '虎宜保持乐观，稳步前行',
+          love: '感情稳定，适合与伴侣增进感情',
+          career: '事业运一般，宜稳扎稳打',
+          wealth: '财运平稳，宜理性消费',
+          health: '健康状况良好，注意休息',
+          tip: '属虎的朋友今日宜保持平常心，稳扎稳打'
+        },
+        rabbit: {
+          overall: '兔宜保持乐观，稳步前行',
+          love: '感情稳定，适合与伴侣增进感情',
+          career: '事业运一般，宜稳扎稳打',
+          wealth: '财运平稳，宜理性消费',
+          health: '健康状况良好，注意休息',
+          tip: '属兔的朋友今日宜保持平常心，稳扎稳打'
+        },
+        dragon: {
+          overall: '龙宜积极进取，把握机遇',
+          love: '感情升温，适合表达心意',
+          career: '机会增多，宜积极争取',
+          wealth: '财运不错，可能有额外收入',
+          health: '健康状况良好，适当运动',
+          tip: '属龙的朋友今日运势良好，宜主动出击'
+        },
+        snake: {
+          overall: '蛇宜谨慎行事，稳扎稳打',
+          love: '感情需理性思考',
+          career: '需谨慎决策，避免冲动',
+          wealth: '财运平稳，宜保守理财',
+          health: '注意饮食规律，保持健康',
+          tip: '属蛇的朋友今日宜保持低调，避免冲动'
+        },
+        horse: {
+          overall: '马宜谨慎行事，稳扎稳打',
+          love: '感情需理性思考',
+          career: '需谨慎决策，避免冲动',
+          wealth: '财运平稳，宜保守理财',
+          health: '注意饮食规律，保持健康',
+          tip: '属马的朋友今日宜保持低调，避免冲动'
+        },
+        goat: {
+          overall: '羊宜谨慎行事，稳扎稳打',
+          love: '感情需理性思考',
+          career: '需谨慎决策，避免冲动',
+          wealth: '财运平稳，宜保守理财',
+          health: '注意饮食规律，保持健康',
+          tip: '属羊的朋友今日宜保持低调，避免冲动'
+        },
+        monkey: {
+          overall: '猴宜积极进取，把握机遇',
+          love: '感情升温，适合表达心意',
+          career: '机会增多，宜积极争取',
+          wealth: '财运不错，可能有额外收入',
+          health: '健康状况良好，适当运动',
+          tip: '属猴的朋友今日运势良好，宜主动出击'
+        },
+        rooster: {
+          overall: '鸡宜保持乐观，稳步前行',
+          love: '感情稳定，适合与伴侣增进感情',
+          career: '事业运一般，宜稳扎稳打',
+          wealth: '财运平稳，宜理性消费',
+          health: '健康状况良好，注意休息',
+          tip: '属鸡的朋友今日宜保持平常心，稳扎稳打'
+        },
+        dog: {
+          overall: '狗宜保持乐观，稳步前行',
+          love: '感情稳定，适合与伴侣增进感情',
+          career: '事业运一般，宜稳扎稳打',
+          wealth: '财运平稳，宜理性消费',
+          health: '健康状况良好，注意休息',
+          tip: '属狗的朋友今日宜保持平常心，稳扎稳打'
+        },
+        pig: {
+          overall: '猪宜保持乐观，稳步前行',
+          love: '感情稳定，适合与伴侣增进感情',
+          career: '事业运一般，宜稳扎稳打',
+          wealth: '财运平稳，宜理性消费',
+          health: '健康状况良好，注意休息',
+          tip: '属猪的朋友今日宜保持平常心，稳扎稳打'
+        }
+      },
+      last_updated: now
+    };
+    
+    cachedData = defaultData;
+    lastFetchTime = now;
+    wx.setStorageSync('fortune_data', defaultData);
+    wx.setStorageSync('last_fetch_time', now);
+    return defaultData;
+    
+    // 生产环境使用网络请求（发布前取消注释）
+    /*
     const response = await wx.request({
       url: FORTUNE_JSON_URL,
       method: 'GET',
@@ -534,6 +659,7 @@ async function fetchFortuneData() {
     } else {
       throw new Error('网络请求失败');
     }
+    */
   } catch (error) {
     console.error('获取运势数据失败:', error);
     // 尝试从本地缓存获取
