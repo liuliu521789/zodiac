@@ -497,7 +497,7 @@ function getStyleByFortuneLevel(level) {
 
 // GitHub仓库地址
 const GITHUB_REPO = 'liuliu521789/zodiac';
-const FORTUNE_JSON_URL = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/fortune_data.json`;
+const FORTUNE_JSON_URL = 'https://raw.githubusercontent.com/liuliu521789/zodiac/refs/heads/main/fortune_data.json';
 
 let cachedData = null;
 let lastFetchTime = 0;
@@ -528,8 +528,26 @@ async function fetchFortuneData() {
       return cachedData;
     }
     
-    // 开发阶段使用本地数据
-    // 注意：发布前需要删除这段代码，使用网络请求
+    // 使用网络请求获取最新数据
+    const response = await wx.request({
+      url: FORTUNE_JSON_URL,
+      method: 'GET',
+      timeout: 10000
+    });
+    
+    if (response.statusCode === 200) {
+      cachedData = response.data;
+      lastFetchTime = now;
+      // 缓存到本地
+      wx.setStorageSync('fortune_data', cachedData);
+      wx.setStorageSync('last_fetch_time', lastFetchTime);
+      return cachedData;
+    } else {
+      throw new Error('网络请求失败');
+    }
+    
+    // 本地默认数据（网络请求失败时使用）
+    /*
     const defaultData = {
       date: '2026年4月9日',
       red_list: ['龙', '牛', '猴'],
@@ -640,25 +658,6 @@ async function fetchFortuneData() {
     wx.setStorageSync('fortune_data', defaultData);
     wx.setStorageSync('last_fetch_time', now);
     return defaultData;
-    
-    // 生产环境使用网络请求（发布前取消注释）
-    /*
-    const response = await wx.request({
-      url: FORTUNE_JSON_URL,
-      method: 'GET',
-      timeout: 10000
-    });
-    
-    if (response.statusCode === 200) {
-      cachedData = response.data;
-      lastFetchTime = now;
-      // 缓存到本地
-      wx.setStorageSync('fortune_data', cachedData);
-      wx.setStorageSync('last_fetch_time', lastFetchTime);
-      return cachedData;
-    } else {
-      throw new Error('网络请求失败');
-    }
     */
   } catch (error) {
     console.error('获取运势数据失败:', error);
