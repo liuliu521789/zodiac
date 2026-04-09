@@ -1,3 +1,14 @@
+<!-- 自定义TopBar -->
+<view class="custom-topbar">
+  <view class="topbar-content">
+    <view class="topbar-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <text class="topbar-title">{{zodiacName}}今日运势</text>
+    <view class="topbar-right"></view>
+  </view>
+</view>
+
 <view class="container">
   <view class="tab-bar">
     <view class="tab-item active" bindtap="switchTab" data-tab="daily">

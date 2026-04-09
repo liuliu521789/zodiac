@@ -1,6 +1,12 @@
+<!-- 自定义TopBar -->
+<view class="custom-topbar">
+  <view class="topbar-content">
+    <text class="topbar-title">12生肖今日运势</text>
+  </view>
+</view>
+
 <view class="container">
   <view class="header">
-    <text class="title">12生肖今日运势</text>
     <text class="date">{{currentDate}}</text>
   </view>
 
