@@ -775,7 +775,23 @@ function generateZodiacSummary(zodiacId, fortuneData) {
   const { name, emoji } = zodiac;
   const { overall, love, career, wealth, health, tip, luckyColor, luckyNumber, luckyTime, luckyDirection } = fortuneData;
   
-  return `${emoji} 属${name}的朋友今日${overall.split('，')[0]}。事业${career.split('，')[0]}，财运${wealth.split('，')[0]}，感情${love.split('，')[0]}，健康${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。${tip}`;
+  // 为每个生肖创建独特的运势文案
+  const zodiacSpecificTemplates = {
+    rat: `${emoji} 属${name}的朋友今日头脑灵活，创意迸发。工作上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜保持敏锐，把握机会`,
+    ox: `${emoji} 属${name}的朋友今日踏实稳重，运势平稳。事业上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜坚持努力，稳步前行`,
+    tiger: `${emoji} 属${name}的朋友今日活力四射，充满干劲。工作上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜勇往直前，展现自信`,
+    rabbit: `${emoji} 属${name}的朋友今日温柔细腻，运势和谐。事业上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜保持平和，享受生活`,
+    dragon: `${emoji} 属${name}的朋友今日气势如虹，运势高涨。工作上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜展现领导力，把握机遇`,
+    snake: `${emoji} 属${name}的朋友今日智慧内敛，运势稳健。事业上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜深思熟虑，洞察先机`,
+    horse: `${emoji} 属${name}的朋友今日热情奔放，充满活力。工作上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜积极行动，追求梦想`,
+    goat: `${emoji} 属${name}的朋友今日温和善良，运势平顺。事业上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜默默耕耘，积累福报`,
+    monkey: `${emoji} 属${name}的朋友今日聪明伶俐，灵活多变。工作上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜创新思维，灵活应变`,
+    rooster: `${emoji} 属${name}的朋友今日勤劳自律，追求完美。工作上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜精益求精，追求卓越`,
+    dog: `${emoji} 属${name}的朋友今日忠诚正直，运势稳定。工作上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜真诚待人，守护幸福`,
+    pig: `${emoji} 属${name}的朋友今日豁达乐观，运势祥和。工作上${career.split('，')[0]}，财运方面${wealth.split('，')[0]}，感情生活${love.split('，')[0]}，身体状况${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。今日宜享受生活，保持乐观`
+  };
+  
+  return zodiacSpecificTemplates[zodiacId] || `${emoji} 属${name}的朋友今日${overall.split('，')[0]}。事业${career.split('，')[0]}，财运${wealth.split('，')[0]}，感情${love.split('，')[0]}，健康${health.split('，')[0]}。幸运色${luckyColor}，幸运数字${luckyNumber}，幸运时间${luckyTime}，幸运方位${luckyDirection}。${tip}`;
 }
 
 async function generateDailySummary() {
@@ -787,11 +803,35 @@ async function generateDailySummary() {
     summary += `✨ 红榜：${red_list.join('、')}\n`;
     summary += `⚠️ 黑榜：${black_list.join('、')}\n\n`;
     
+    // 为每个生肖创建独特的总览文案
+    const zodiacOverviewTemplates = {
+      rat: `${zodiac.emoji} 属${zodiac.name}：头脑灵活，创意迸发，宜把握机会`,
+      ox: `${zodiac.emoji} 属${zodiac.name}：踏实稳重，运势平稳，宜稳步前行`,
+      tiger: `${zodiac.emoji} 属${zodiac.name}：活力四射，充满干劲，宜展现自信`,
+      rabbit: `${zodiac.emoji} 属${zodiac.name}：温柔细腻，运势和谐，宜享受生活`,
+      dragon: `${zodiac.emoji} 属${zodiac.name}：气势如虹，运势高涨，宜把握机遇`,
+      snake: `${zodiac.emoji} 属${zodiac.name}：智慧内敛，运势稳健，宜洞察先机`,
+      horse: `${zodiac.emoji} 属${zodiac.name}：热情奔放，充满活力，宜追求梦想`,
+      goat: `${zodiac.emoji} 属${zodiac.name}：温和善良，运势平顺，宜积累福报`,
+      monkey: `${zodiac.emoji} 属${zodiac.name}：聪明伶俐，灵活多变，宜创新思维`,
+      rooster: `${zodiac.emoji} 属${zodiac.name}：勤劳自律，追求完美，宜精益求精`,
+      dog: `${zodiac.emoji} 属${zodiac.name}：忠诚正直，运势稳定，宜守护幸福`,
+      pig: `${zodiac.emoji} 属${zodiac.name}：豁达乐观，运势祥和，宜保持乐观`
+    };
+    
     zodiacList.forEach(zodiac => {
       const fortune = zodiacs[zodiac.id];
       if (fortune) {
         const luckLevel = red_list.includes(zodiac.name) ? '🌟' : black_list.includes(zodiac.name) ? '⚠️' : '✨';
-        summary += `${luckLevel} ${zodiac.emoji} 属${zodiac.name}：${fortune.overall.split('。')[0]}。\n`;
+        
+        // 根据运势等级生成不同的文案
+        if (red_list.includes(zodiac.name)) {
+          summary += `${luckLevel} ${zodiac.emoji} 属${zodiac.name}：今日运势极佳，${fortune.overall.split('，')[0]}，宜积极行动！\n`;
+        } else if (black_list.includes(zodiac.name)) {
+          summary += `${luckLevel} ${zodiac.emoji} 属${zodiac.name}：今日运势一般，${fortune.overall.split('，')[0]}，宜谨慎行事！\n`;
+        } else {
+          summary += `${luckLevel} ${zodiac.emoji} 属${zodiac.name}：今日运势平稳，${fortune.overall.split('，')[0]}，宜保持平常心！\n`;
+        }
       }
     });
     
@@ -806,18 +846,15 @@ async function generateDailySummary() {
     summary += `⚠️ 黑榜：蛇、马、羊\n\n`;
     
     zodiacList.forEach(zodiac => {
-      let style;
+      const luckLevel = ['龙', '牛', '猴'].includes(zodiac.name) ? '🌟' : ['蛇', '马', '羊'].includes(zodiac.name) ? '⚠️' : '✨';
+      
+      // 为每个生肖生成独特的文案
       if (['龙', '牛', '猴'].includes(zodiac.name)) {
-        style = 'style3';
+        summary += `${luckLevel} ${zodiac.emoji} 属${zodiac.name}：今日运势极佳，宜积极行动，把握机遇！\n`;
       } else if (['蛇', '马', '羊'].includes(zodiac.name)) {
-        style = 'style1';
+        summary += `${luckLevel} ${zodiac.emoji} 属${zodiac.name}：今日运势一般，宜谨慎行事，保持低调！\n`;
       } else {
-        style = 'style2';
-      }
-      const fortune = fortuneStyles[style][zodiac.id];
-      if (fortune) {
-        const luckLevel = ['龙', '牛', '猴'].includes(zodiac.name) ? '🌟' : ['蛇', '马', '羊'].includes(zodiac.name) ? '⚠️' : '✨';
-        summary += `${luckLevel} ${zodiac.emoji} 属${zodiac.name}：${fortune.overall.split('。')[0]}。\n`;
+        summary += `${luckLevel} ${zodiac.emoji} 属${zodiac.name}：今日运势平稳，宜保持平常心，稳扎稳打！\n`;
       }
     });
     
