@@ -168,6 +168,20 @@ def crawl_fortune():
                         'tip': f"属{name}的朋友今日宜保持平常心，稳扎稳打"
                     }
         
+        # 为每个生肖添加幸运信息
+        lucky_colors = ['红色', '黄色', '绿色', '蓝色', '紫色', '金色', '橙色', '白色']
+        lucky_numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+        lucky_times = ['01:00-03:00', '03:00-05:00', '05:00-07:00', '07:00-09:00', '09:00-11:00', '11:00-13:00', '13:00-15:00', '15:00-17:00', '17:00-19:00', '19:00-21:00', '21:00-23:00']
+        lucky_directions = ['正东方', '正南方', '正西方', '正北方', '东南方', '西南方', '东北方', '西北方']
+        
+        for zodiac_id in fortune_data:
+            # 为每个生肖生成不同的幸运信息（基于生肖ID的哈希值）
+            hash_value = sum(ord(c) for c in zodiac_id)
+            fortune_data[zodiac_id]['luckyColor'] = lucky_colors[hash_value % len(lucky_colors)]
+            fortune_data[zodiac_id]['luckyNumber'] = lucky_numbers[hash_value % len(lucky_numbers)]
+            fortune_data[zodiac_id]['luckyTime'] = lucky_times[hash_value % len(lucky_times)]
+            fortune_data[zodiac_id]['luckyDirection'] = lucky_directions[hash_value % len(lucky_directions)]
+        
         # 构建完整数据
         data = {
             'date': date_text,
@@ -198,8 +212,21 @@ def crawl_fortune():
             'last_updated': datetime.now().isoformat()
         }
         
+        # 为每个生肖添加幸运信息
+        lucky_colors = ['红色', '黄色', '绿色', '蓝色', '紫色', '金色', '橙色', '白色']
+        lucky_numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+        lucky_times = ['01:00-03:00', '03:00-05:00', '05:00-07:00', '07:00-09:00', '09:00-11:00', '11:00-13:00', '13:00-15:00', '15:00-17:00', '17:00-19:00', '19:00-21:00', '21:00-23:00']
+        lucky_directions = ['正东方', '正南方', '正西方', '正北方', '东南方', '西南方', '东北方', '西北方']
+        
         # 生成默认运势数据
         for name, zodiac_id in zodiac_map.items():
+            # 为每个生肖生成不同的幸运信息（基于生肖ID的哈希值）
+            hash_value = sum(ord(c) for c in zodiac_id)
+            lucky_color = lucky_colors[hash_value % len(lucky_colors)]
+            lucky_number = lucky_numbers[hash_value % len(lucky_numbers)]
+            lucky_time = lucky_times[hash_value % len(lucky_times)]
+            lucky_direction = lucky_directions[hash_value % len(lucky_directions)]
+            
             if name in ['龙', '猴', '牛']:
                 default_data['zodiacs'][zodiac_id] = {
                     'overall': f"{name}宜积极进取，把握机遇",
@@ -207,7 +234,11 @@ def crawl_fortune():
                     'career': '机会增多，宜积极争取',
                     'wealth': '财运不错，可能有额外收入',
                     'health': '健康状况良好，适当运动',
-                    'tip': f"属{name}的朋友今日运势良好，宜主动出击"
+                    'tip': f"属{name}的朋友今日运势良好，宜主动出击",
+                    'luckyColor': lucky_color,
+                    'luckyNumber': lucky_number,
+                    'luckyTime': lucky_time,
+                    'luckyDirection': lucky_direction
                 }
             elif name in ['马', '羊', '兔']:
                 default_data['zodiacs'][zodiac_id] = {
@@ -216,7 +247,11 @@ def crawl_fortune():
                     'career': '需谨慎决策，避免冲动',
                     'wealth': '财运平稳，宜保守理财',
                     'health': '注意饮食规律，保持健康',
-                    'tip': f"属{name}的朋友今日宜保持低调，避免冲动"
+                    'tip': f"属{name}的朋友今日宜保持低调，避免冲动",
+                    'luckyColor': lucky_color,
+                    'luckyNumber': lucky_number,
+                    'luckyTime': lucky_time,
+                    'luckyDirection': lucky_direction
                 }
             else:
                 default_data['zodiacs'][zodiac_id] = {
@@ -225,7 +260,11 @@ def crawl_fortune():
                     'career': '事业运一般，宜稳扎稳打',
                     'wealth': '财运平稳，不宜大额投资',
                     'health': '健康状况良好，注意休息',
-                    'tip': f"属{name}的朋友今日宜保持平常心，稳扎稳打"
+                    'tip': f"属{name}的朋友今日宜保持平常心，稳扎稳打",
+                    'luckyColor': lucky_color,
+                    'luckyNumber': lucky_number,
+                    'luckyTime': lucky_time,
+                    'luckyDirection': lucky_direction
                 }
         
         with open('fortune_data.json', 'w', encoding='utf-8') as f:
