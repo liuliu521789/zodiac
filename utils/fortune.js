@@ -528,26 +528,8 @@ async function fetchFortuneData() {
       return cachedData;
     }
     
-    // 使用网络请求获取最新数据
-    const response = await wx.request({
-      url: FORTUNE_JSON_URL,
-      method: 'GET',
-      timeout: 10000
-    });
-    
-    if (response.statusCode === 200) {
-      cachedData = response.data;
-      lastFetchTime = now;
-      // 缓存到本地
-      wx.setStorageSync('fortune_data', cachedData);
-      wx.setStorageSync('last_fetch_time', lastFetchTime);
-      return cachedData;
-    } else {
-      throw new Error('网络请求失败');
-    }
-    
-    // 本地默认数据（网络请求失败时使用）
-    /*
+    // 开发阶段使用本地数据（避免网络请求失败）
+    // 注意：发布前需要取消注释网络请求代码
     const defaultData = {
       date: '2026年4月9日',
       red_list: ['龙', '牛', '猴'],
@@ -658,6 +640,25 @@ async function fetchFortuneData() {
     wx.setStorageSync('fortune_data', defaultData);
     wx.setStorageSync('last_fetch_time', now);
     return defaultData;
+    
+    // 生产环境使用网络请求（发布前取消注释）
+    /*
+    const response = await wx.request({
+      url: FORTUNE_JSON_URL,
+      method: 'GET',
+      timeout: 10000
+    });
+    
+    if (response.statusCode === 200) {
+      cachedData = response.data;
+      lastFetchTime = now;
+      // 缓存到本地
+      wx.setStorageSync('fortune_data', cachedData);
+      wx.setStorageSync('last_fetch_time', lastFetchTime);
+      return cachedData;
+    } else {
+      throw new Error('网络请求失败');
+    }
     */
   } catch (error) {
     console.error('获取运势数据失败:', error);
