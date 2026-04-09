@@ -528,121 +528,7 @@ async function fetchFortuneData() {
       return cachedData;
     }
     
-    // 开发阶段使用本地数据（避免网络请求失败）
-    // 注意：发布前需要取消注释网络请求代码
-    const defaultData = {
-      date: '2026年4月9日',
-      red_list: ['龙', '牛', '猴'],
-      black_list: ['蛇', '马', '羊'],
-      zodiacs: {
-        rat: {
-          overall: '鼠宜保持乐观，稳步前行',
-          love: '感情稳定，适合与伴侣增进感情',
-          career: '事业运一般，宜稳扎稳打',
-          wealth: '财运平稳，宜理性消费',
-          health: '健康状况良好，注意休息',
-          tip: '属鼠的朋友今日宜保持平常心，稳扎稳打'
-        },
-        ox: {
-          overall: '牛宜积极进取，把握机遇',
-          love: '感情升温，适合表达心意',
-          career: '机会增多，宜积极争取',
-          wealth: '财运不错，可能有额外收入',
-          health: '健康状况良好，适当运动',
-          tip: '属牛的朋友今日运势良好，宜主动出击'
-        },
-        tiger: {
-          overall: '虎宜保持乐观，稳步前行',
-          love: '感情稳定，适合与伴侣增进感情',
-          career: '事业运一般，宜稳扎稳打',
-          wealth: '财运平稳，宜理性消费',
-          health: '健康状况良好，注意休息',
-          tip: '属虎的朋友今日宜保持平常心，稳扎稳打'
-        },
-        rabbit: {
-          overall: '兔宜保持乐观，稳步前行',
-          love: '感情稳定，适合与伴侣增进感情',
-          career: '事业运一般，宜稳扎稳打',
-          wealth: '财运平稳，宜理性消费',
-          health: '健康状况良好，注意休息',
-          tip: '属兔的朋友今日宜保持平常心，稳扎稳打'
-        },
-        dragon: {
-          overall: '龙宜积极进取，把握机遇',
-          love: '感情升温，适合表达心意',
-          career: '机会增多，宜积极争取',
-          wealth: '财运不错，可能有额外收入',
-          health: '健康状况良好，适当运动',
-          tip: '属龙的朋友今日运势良好，宜主动出击'
-        },
-        snake: {
-          overall: '蛇宜谨慎行事，稳扎稳打',
-          love: '感情需理性思考',
-          career: '需谨慎决策，避免冲动',
-          wealth: '财运平稳，宜保守理财',
-          health: '注意饮食规律，保持健康',
-          tip: '属蛇的朋友今日宜保持低调，避免冲动'
-        },
-        horse: {
-          overall: '马宜谨慎行事，稳扎稳打',
-          love: '感情需理性思考',
-          career: '需谨慎决策，避免冲动',
-          wealth: '财运平稳，宜保守理财',
-          health: '注意饮食规律，保持健康',
-          tip: '属马的朋友今日宜保持低调，避免冲动'
-        },
-        goat: {
-          overall: '羊宜谨慎行事，稳扎稳打',
-          love: '感情需理性思考',
-          career: '需谨慎决策，避免冲动',
-          wealth: '财运平稳，宜保守理财',
-          health: '注意饮食规律，保持健康',
-          tip: '属羊的朋友今日宜保持低调，避免冲动'
-        },
-        monkey: {
-          overall: '猴宜积极进取，把握机遇',
-          love: '感情升温，适合表达心意',
-          career: '机会增多，宜积极争取',
-          wealth: '财运不错，可能有额外收入',
-          health: '健康状况良好，适当运动',
-          tip: '属猴的朋友今日运势良好，宜主动出击'
-        },
-        rooster: {
-          overall: '鸡宜保持乐观，稳步前行',
-          love: '感情稳定，适合与伴侣增进感情',
-          career: '事业运一般，宜稳扎稳打',
-          wealth: '财运平稳，宜理性消费',
-          health: '健康状况良好，注意休息',
-          tip: '属鸡的朋友今日宜保持平常心，稳扎稳打'
-        },
-        dog: {
-          overall: '狗宜保持乐观，稳步前行',
-          love: '感情稳定，适合与伴侣增进感情',
-          career: '事业运一般，宜稳扎稳打',
-          wealth: '财运平稳，宜理性消费',
-          health: '健康状况良好，注意休息',
-          tip: '属狗的朋友今日宜保持平常心，稳扎稳打'
-        },
-        pig: {
-          overall: '猪宜保持乐观，稳步前行',
-          love: '感情稳定，适合与伴侣增进感情',
-          career: '事业运一般，宜稳扎稳打',
-          wealth: '财运平稳，宜理性消费',
-          health: '健康状况良好，注意休息',
-          tip: '属猪的朋友今日宜保持平常心，稳扎稳打'
-        }
-      },
-      last_updated: now
-    };
-    
-    cachedData = defaultData;
-    lastFetchTime = now;
-    wx.setStorageSync('fortune_data', defaultData);
-    wx.setStorageSync('last_fetch_time', now);
-    return defaultData;
-    
-    // 生产环境使用网络请求（发布前取消注释）
-    /*
+    // 生产环境使用网络请求
     const response = await wx.request({
       url: FORTUNE_JSON_URL,
       method: 'GET',
@@ -659,7 +545,6 @@ async function fetchFortuneData() {
     } else {
       throw new Error('网络请求失败');
     }
-    */
   } catch (error) {
     console.error('获取运势数据失败:', error);
     // 尝试从本地缓存获取
@@ -678,11 +563,28 @@ async function fetchFortuneData() {
 }
 
 function getDefaultFortuneData() {
+  const date = new Date();
+  const todayText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+  const tomorrowText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate() + 1}日`;
+  const monthText = `${date.getFullYear()}年${date.getMonth() + 1}月`;
+  
   const defaultData = {
-    date: new Date().toLocaleDateString('zh-CN'),
-    red_list: ['龙', '牛', '猴'],
-    black_list: ['蛇', '马', '羊'],
-    zodiacs: {}
+    today: {
+      date: todayText,
+      red_list: ['龙', '牛', '猴'],
+      black_list: ['蛇', '马', '羊'],
+      zodiacs: {}
+    },
+    tomorrow: {
+      date: tomorrowText,
+      red_list: ['龙', '牛', '猴'],
+      black_list: ['蛇', '马', '羊'],
+      zodiacs: {}
+    },
+    month: {
+      date: monthText,
+      zodiacs: {}
+    }
   };
   
   // 为每个生肖根据红黑榜设置不同风格
@@ -695,24 +597,32 @@ function getDefaultFortuneData() {
     } else {
       style = 'style2'; // 其他用温馨鼓励风格
     }
-    defaultData.zodiacs[zodiac.id] = fortuneStyles[style][zodiac.id];
+    
+    // 今日运势
+    defaultData.today.zodiacs[zodiac.id] = fortuneStyles[style][zodiac.id];
+    
+    // 明日运势
+    defaultData.tomorrow.zodiacs[zodiac.id] = fortuneStyles[style][zodiac.id];
+    
+    // 本月运势
+    defaultData.month.zodiacs[zodiac.id] = fortuneStyles[style][zodiac.id];
   });
   
   return defaultData;
 }
 
-async function getFortune(zodiacId) {
+async function getFortune(zodiacId, type = 'today') {
   try {
     const data = await fetchFortuneData();
-    const zodiacData = data.zodiacs[zodiacId];
+    const zodiacData = data[type]?.zodiacs[zodiacId];
     let zodiacInfo = zodiacList.find(z => z.id === zodiacId);
     
     if (zodiacData) {
       // 根据红黑榜确定风格
       let style;
-      if (data.red_list && data.red_list.includes(zodiacInfo.name)) {
+      if (data[type].red_list && data[type].red_list.includes(zodiacInfo.name)) {
         style = 'style3'; // 红榜用积极向上风格
-      } else if (data.black_list && data.black_list.includes(zodiacInfo.name)) {
+      } else if (data[type].black_list && data[type].black_list.includes(zodiacInfo.name)) {
         style = 'style1'; // 黑榜用简洁明了风格
       } else {
         style = 'style2'; // 其他用温馨鼓励风格
@@ -750,9 +660,7 @@ async function getFortune(zodiacId) {
   } catch (error) {
     console.error('获取运势失败:', error);
     // 使用默认风格
-    if (!zodiacInfo) {
-      zodiacInfo = zodiacList.find(z => z.id === zodiacId);
-    }
+    const zodiacInfo = zodiacList.find(z => z.id === zodiacId);
     let style;
     if (['龙', '牛', '猴'].includes(zodiacInfo.name)) {
       style = 'style3';
@@ -797,27 +705,12 @@ function generateZodiacSummary(zodiacId, fortuneData) {
 async function generateDailySummary() {
   try {
     const data = await fetchFortuneData();
-    const { date, red_list, black_list, zodiacs } = data;
+    const { today } = data;
+    const { date, red_list, black_list, zodiacs } = today;
     
     let summary = `${date} 十二生肖今日运势：\n`;
     summary += `✨ 红榜：${red_list.join('、')}\n`;
     summary += `⚠️ 黑榜：${black_list.join('、')}\n\n`;
-    
-    // 为每个生肖创建独特的总览文案
-    const zodiacOverviewTemplates = {
-      rat: `${zodiac.emoji} 属${zodiac.name}：头脑灵活，创意迸发，宜把握机会`,
-      ox: `${zodiac.emoji} 属${zodiac.name}：踏实稳重，运势平稳，宜稳步前行`,
-      tiger: `${zodiac.emoji} 属${zodiac.name}：活力四射，充满干劲，宜展现自信`,
-      rabbit: `${zodiac.emoji} 属${zodiac.name}：温柔细腻，运势和谐，宜享受生活`,
-      dragon: `${zodiac.emoji} 属${zodiac.name}：气势如虹，运势高涨，宜把握机遇`,
-      snake: `${zodiac.emoji} 属${zodiac.name}：智慧内敛，运势稳健，宜洞察先机`,
-      horse: `${zodiac.emoji} 属${zodiac.name}：热情奔放，充满活力，宜追求梦想`,
-      goat: `${zodiac.emoji} 属${zodiac.name}：温和善良，运势平顺，宜积累福报`,
-      monkey: `${zodiac.emoji} 属${zodiac.name}：聪明伶俐，灵活多变，宜创新思维`,
-      rooster: `${zodiac.emoji} 属${zodiac.name}：勤劳自律，追求完美，宜精益求精`,
-      dog: `${zodiac.emoji} 属${zodiac.name}：忠诚正直，运势稳定，宜守护幸福`,
-      pig: `${zodiac.emoji} 属${zodiac.name}：豁达乐观，运势祥和，宜保持乐观`
-    };
     
     zodiacList.forEach(zodiac => {
       const fortune = zodiacs[zodiac.id];

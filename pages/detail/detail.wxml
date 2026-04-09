@@ -1,19 +1,15 @@
 <view class="container">
   <view class="tab-bar">
-    <view class="tab-item active" bindtap="switchTab" data-tab="daily">
-      <text>日运</text>
+    <view class="tab-item {{currentTab === 'today' ? 'active' : ''}}" bindtap="switchTab" data-tab="today">
+      <text>今日</text>
       <view class="tab-line"></view>
     </view>
-    <view class="tab-item" bindtap="switchTab" data-tab="weekly">
-      <text>周运</text>
+    <view class="tab-item {{currentTab === 'tomorrow' ? 'active' : ''}}" bindtap="switchTab" data-tab="tomorrow">
+      <text>明日</text>
       <view class="tab-line"></view>
     </view>
-    <view class="tab-item" bindtap="switchTab" data-tab="monthly">
+    <view class="tab-item {{currentTab === 'monthly' ? 'active' : ''}}" bindtap="switchTab" data-tab="monthly">
       <text>月运</text>
-      <view class="tab-line"></view>
-    </view>
-    <view class="tab-item" bindtap="switchTab" data-tab="yearly">
-      <text>年运</text>
       <view class="tab-line"></view>
     </view>
   </view>

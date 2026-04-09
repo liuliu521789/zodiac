@@ -12,23 +12,23 @@ Page({
     luckyNumber: '6',
     luckyTime: '06:00-08:00',
     luckyDirection: '西南方',
-    currentTab: 'daily',
+    currentTab: 'today',
     loading: true
   },
 
   onLoad(options) {
     const zodiacId = options.zodiac;
     if (zodiacId) {
-      this.loadFortune(zodiacId);
+      this.loadFortune(zodiacId, 'today');
     }
   },
 
-  async loadFortune(zodiacId) {
+  async loadFortune(zodiacId, type = 'today') {
     this.setData({ loading: true });
     
     try {
       const zodiacInfo = fortune.getZodiacInfo(zodiacId);
-      const fortuneData = await fortune.getFortune(zodiacId);
+      const fortuneData = await fortune.getFortune(zodiacId, type);
 
       if (zodiacInfo && fortuneData) {
         this.setData({
@@ -60,15 +60,28 @@ Page({
     }
   },
 
-  switchTab(e) {
+  async switchTab(e) {
     const tab = e.currentTarget.dataset.tab;
     this.setData({ currentTab: tab });
-    if (tab !== 'daily') {
-      wx.showToast({
-        title: `${tab === 'weekly' ? '周运' : tab === 'monthly' ? '月运' : '年运'}功能敬请期待`,
-        icon: 'none'
-      });
+    
+    // 根据tab切换不同类型的运势
+    let type;
+    switch (tab) {
+      case 'today':
+        type = 'today';
+        break;
+      case 'tomorrow':
+        type = 'tomorrow';
+        break;
+      case 'monthly':
+        type = 'month';
+        break;
+      default:
+        type = 'today';
     }
+    
+    // 重新加载对应类型的运势
+    await this.loadFortune(this.data.zodiacId, type);
   },
 
   goBack() {
