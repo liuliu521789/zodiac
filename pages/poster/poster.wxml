@@ -1,0 +1,51 @@
+<view class="container">
+  <canvas
+    canvas-id="posterCanvas"
+    type="2d"
+    style="width:540rpx;height:960rpx;position:absolute;left:-9999rpx;top:0;"
+  ></canvas>
+  <view class="poster-wrapper" wx:if="{{posterPath}}">
+    <image
+      class="poster-image"
+      src="{{posterPath}}"
+      mode="aspectFit"
+      bindlongpress="onPreview"
+    ></image>
+  </view>
+
+  <view class="loading-wrapper" wx:if="{{generating}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">海报生成中...</text>
+  </view>
+
+  <view class="tips">
+    <text class="tips-icon">💡</text>
+    <text class="tips-text">长按图片可预览大图</text>
+  </view>
+
+  <view class="action-bar">
+    <view class="action-btn back" bindtap="goBack" hover-class="action-hover">
+      <text class="btn-icon">←</text>
+      <text class="btn-text">返回详情</text>
+    </view>
+    <view class="action-btn regenerate" bindtap="regenerate" hover-class="action-hover">
+      <text class="btn-icon">🔄</text>
+      <text class="btn-text">重新生成</text>
+    </view>
+  </view>
+
+  <view class="share-bar">
+    <view class="share-btn save" bindtap="saveImage" hover-class="action-hover">
+      <text class="btn-icon">💾</text>
+      <text class="btn-text">保存图片</text>
+    </view>
+    <view class="share-btn friend" bindtap="shareToFriend" hover-class="action-hover">
+      <text class="btn-icon">💬</text>
+      <text class="btn-text">分享好友</text>
+    </view>
+    <view class="share-btn timeline" bindtap="shareToTimeline" hover-class="action-hover">
+      <text class="btn-icon">朋友圈</text>
+      <text class="btn-text">朋友圈</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,105 @@
+<view class="container">
+  <view class="tab-bar">
+    <view class="tab-item active" bindtap="switchTab" data-tab="daily">
+      <text>日运</text>
+      <view class="tab-line"></view>
+    </view>
+    <view class="tab-item" bindtap="switchTab" data-tab="weekly">
+      <text>周运</text>
+      <view class="tab-line"></view>
+    </view>
+    <view class="tab-item" bindtap="switchTab" data-tab="monthly">
+      <text>月运</text>
+      <view class="tab-line"></view>
+    </view>
+    <view class="tab-item" bindtap="switchTab" data-tab="yearly">
+      <text>年运</text>
+      <view class="tab-line"></view>
+    </view>
+  </view>
+
+  <view class="short-comment-card">
+    <view class="comment-tag">短评</view>
+    <text class="comment-text">{{shortComment}}</text>
+  </view>
+
+  <view class="lucky-info">
+    <view class="lucky-item">
+      <text class="lucky-icon lucky-color">🎨</text>
+      <text class="lucky-value">{{luckyColor}}</text>
+      <text class="lucky-label">幸运色</text>
+    </view>
+    <view class="lucky-item">
+      <text class="lucky-icon lucky-number">6️⃣</text>
+      <text class="lucky-value">{{luckyNumber}}</text>
+      <text class="lucky-label">幸运数字</text>
+    </view>
+    <view class="lucky-item">
+      <text class="lucky-icon lucky-time">⏰</text>
+      <text class="lucky-value">{{luckyTime}}</text>
+      <text class="lucky-label">幸运时间</text>
+    </view>
+    <view class="lucky-item">
+      <text class="lucky-icon lucky-direction">🧭</text>
+      <text class="lucky-value">{{luckyDirection}}</text>
+      <text class="lucky-label">幸运方位</text>
+    </view>
+  </view>
+
+  <view class="summary-card" bindtap="copySummary">
+    <view class="summary-header">
+      <text class="summary-title">今日运势总结</text>
+      <text class="summary-action">点击复制</text>
+    </view>
+    <text class="summary-content">{{fortune.summary}}</text>
+  </view>
+
+  <view class="fortune-section">
+    <view class="fortune-card overall">
+      <view class="card-header">
+        <text class="card-icon">⚡</text>
+        <text class="card-title">综合运</text>
+      </view>
+      <text class="card-content">{{fortune.overall}}</text>
+    </view>
+
+    <view class="fortune-card love">
+      <view class="card-header">
+        <text class="card-icon">💕</text>
+        <text class="card-title">桃花运</text>
+      </view>
+      <text class="card-content">{{fortune.love}}</text>
+    </view>
+
+    <view class="fortune-card career">
+      <view class="card-header">
+        <text class="card-icon">💼</text>
+        <text class="card-title">事业运</text>
+      </view>
+      <text class="card-content">{{fortune.career}}</text>
+    </view>
+
+    <view class="fortune-card wealth">
+      <view class="card-header">
+        <text class="card-icon">💰</text>
+        <text class="card-title">财富运</text>
+      </view>
+      <text class="card-content">{{fortune.wealth}}</text>
+    </view>
+
+    <view class="fortune-card health">
+      <view class="card-header">
+        <text class="card-icon">🏥</text>
+        <text class="card-title">健康运</text>
+      </view>
+      <text class="card-content">{{fortune.health}}</text>
+    </view>
+  </view>
+
+  <view class="bottom-action">
+    <view class="poster-btn" bindtap="goToPoster" hover-class="poster-hover">
+      <text class="poster-icon">🖼️</text>
+      <text>生成海报</text>
+    </view>
+  </view>
+</view>

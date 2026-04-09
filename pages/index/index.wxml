@@ -1,0 +1,60 @@
+<view class="container">
+  <view class="header">
+    <text class="title">12生肖今日运势</text>
+    <text class="date">{{currentDate}}</text>
+  </view>
+
+  <view class="summary-card" bindtap="showSummary">
+    <view class="summary-header">
+      <text class="summary-title">今日运势总览</text>
+      <text class="summary-arrow">▼</text>
+    </view>
+    <text class="summary-content">{{summaryPreview}}</text>
+  </view>
+
+  <view class="zodiac-grid">
+    <view 
+      wx:for="{{zodiacList}}" 
+      wx:key="{{item.id}}"
+      class="zodiac-item"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="zodiac-emoji">{{item.emoji}}</view>
+      <view class="zodiac-name">{{item.name}}</view>
+      <view wx:if="{{redList.includes(item.name)}}" class="luck-tag good">吉</view>
+      <view wx:elif="{{blackList.includes(item.name)}}" class="luck-tag bad">凶</view>
+    </view>
+  </view>
+
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goToMyZodiac">
+      <text class="nav-icon">👤</text>
+      <text class="nav-text">我的生肖</text>
+    </view>
+    <view class="nav-item" bindtap="showSummary">
+      <text class="nav-icon">📊</text>
+      <text class="nav-text">运势总览</text>
+    </view>
+    <view class="nav-item" bindtap="goToAbout">
+      <text class="nav-icon">ℹ️</text>
+      <text class="nav-text">关于</text>
+    </view>
+  </view>
+
+  <view class="summary-modal" wx:if="{{showSummaryModal}}">
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">十二生肖今日运势</text>
+        <text class="modal-close" bindtap="closeSummary">×</text>
+      </view>
+      <view class="modal-body">
+        <text class="modal-text">{{fullSummary}}</text>
+      </view>
+      <view class="modal-footer">
+        <button class="modal-btn" bindtap="closeSummary">关闭</button>
+        <button class="modal-btn share" bindtap="shareSummary">分享</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+<view class="container">
+  <view class="header">
+    <text class="title">选择您的出生年份</text>
+    <text class="subtitle">系统将自动匹配您的生肖</text>
+  </view>
+
+  <view class="picker-section">
+    <picker
+      mode="selector"
+      range="{{yearList}}"
+      value="{{yearIndex}}"
+      bindchange="onYearChange"
+    >
+      <view class="picker-display">
+        <text class="picker-value">{{selectedYear || '请选择年份'}}</text>
+        <text class="picker-arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="result-section" wx:if="{{matchedZodiac}}">
+    <view class="matched-card">
+      <text class="zodiac-emoji">{{matchedZodiac.emoji}}</text>
+      <text class="zodiac-name">{{matchedZodiac.name}}</text>
+      <text class="zodiac-label">您的生肖</text>
+    </view>
+  </view>
+
+  <view class="action-section" wx:if="{{matchedZodiac}}">
+    <view class="action-btn primary" bindtap="viewFortune" hover-class="action-hover">
+      <text class="btn-text">查看我的今日运势</text>
+    </view>
+    <view class="action-btn secondary" bindtap="goHome" hover-class="action-hover">
+      <text class="btn-text">返回首页</text>
+    </view>
+  </view>
+
+  <view class="tips">
+    <text class="tips-title">小贴士</text>
+    <text class="tips-content">您的生肖信息会保存在本地，方便下次快速查看</text>
+  </view>
+</view>

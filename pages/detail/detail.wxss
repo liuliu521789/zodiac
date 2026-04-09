@@ -1,0 +1,264 @@
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 120rpx;
+}
+
+.tab-bar {
+  display: flex;
+  background: #fff;
+  padding: 20rpx 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.tab-item text {
+  font-size: 30rpx;
+  color: #999;
+  padding-bottom: 12rpx;
+}
+
+.tab-item.active text {
+  color: #333;
+  font-weight: 600;
+}
+
+.tab-line {
+  width: 40rpx;
+  height: 4rpx;
+  background: transparent;
+  border-radius: 2rpx;
+}
+
+.tab-item.active .tab-line {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.short-comment-card {
+  margin: 20rpx 30rpx;
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+.short-comment-card::before {
+  content: '';
+  position: absolute;
+  top: -20rpx;
+  left: -20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+}
+
+.short-comment-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30rpx;
+  right: -10rpx;
+  width: 120rpx;
+  height: 120rpx;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+}
+
+.comment-tag {
+  background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+  color: #fff;
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.comment-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.lucky-info {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  margin: 0 30rpx;
+  border-radius: 24rpx;
+  padding: 30rpx 10rpx;
+}
+
+.lucky-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lucky-icon {
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
+}
+
+.lucky-value {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 4rpx;
+}
+
+.lucky-label {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.summary-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin: 20rpx 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.summary-card:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.summary-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.summary-action {
+  font-size: 22rpx;
+  color: #667eea;
+}
+
+.summary-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.fortune-section {
+  padding: 20rpx 30rpx;
+}
+
+.fortune-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.fortune-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120rpx;
+  height: 80rpx;
+  opacity: 0.1;
+  border-radius: 0 24rpx 0 60rpx;
+}
+
+.fortune-card.overall::before {
+  background: linear-gradient(135deg, #81d4fa 0%, #4fc3f7 100%);
+}
+
+.fortune-card.love::before {
+  background: linear-gradient(135deg, #ffcdd2 0%, #ef9a9a 100%);
+}
+
+.fortune-card.career::before {
+  background: linear-gradient(135deg, #bbdefb 0%, #90caf9 100%);
+}
+
+.fortune-card.wealth::before {
+  background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%);
+}
+
+.fortune-card.health::before {
+  background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.card-icon {
+  font-size: 40rpx;
+  margin-right: 12rpx;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.card-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.7;
+}
+
+.bottom-action {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 20rpx 30rpx 40rpx;
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.poster-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+  color: #fff;
+  padding: 28rpx;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.poster-hover {
+  opacity: 0.9;
+}
+
+.poster-icon {
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}

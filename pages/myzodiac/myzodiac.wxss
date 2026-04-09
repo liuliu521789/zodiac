@@ -1,0 +1,135 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fdf6f0 0%, #f8f6f3 100%);
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.subtitle {
+  font-size: 26rpx;
+  color: #888;
+}
+
+.picker-section {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.picker-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
+}
+
+.picker-value {
+  font-size: 36rpx;
+  color: #333;
+  margin-right: 16rpx;
+}
+
+.picker-arrow {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.result-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50rpx;
+}
+
+.matched-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #fff5e6 0%, #ffe4c4 100%);
+  border-radius: 32rpx;
+  padding: 50rpx 80rpx;
+  border: 2rpx solid #ffb347;
+}
+
+.zodiac-emoji {
+  font-size: 140rpx;
+  margin-bottom: 16rpx;
+}
+
+.zodiac-name {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.zodiac-label {
+  font-size: 24rpx;
+  color: #888;
+}
+
+.action-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.action-btn {
+  padding: 28rpx 0;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+  color: #fff;
+}
+
+.action-btn.secondary {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.action-hover {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.tips {
+  margin-top: 60rpx;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.tips-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.tips-content {
+  font-size: 24rpx;
+  color: #888;
+  line-height: 1.5;
+}
