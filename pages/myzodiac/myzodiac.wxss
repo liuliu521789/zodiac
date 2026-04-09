@@ -1,51 +1,7 @@
-.custom-topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100rpx;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.topbar-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 30rpx;
-}
-
-.topbar-left {
-  width: 80rpx;
-}
-
-.back-icon {
-  font-size: 40rpx;
-  color: #fff;
-  font-weight: bold;
-}
-
-.topbar-title {
-  flex: 1;
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2);
-}
-
-.topbar-right {
-  width: 80rpx;
-}
-
 .container {
   min-height: 100vh;
   background: linear-gradient(180deg, #fdf6f0 0%, #f8f6f3 100%);
-  padding: 140rpx 30rpx 40rpx;
+  padding: 40rpx 30rpx;
   box-sizing: border-box;
 }
 

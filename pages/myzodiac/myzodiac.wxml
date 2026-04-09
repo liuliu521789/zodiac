@@ -1,14 +1,3 @@
-<!-- 自定义TopBar -->
-<view class="custom-topbar">
-  <view class="topbar-content">
-    <view class="topbar-left" bindtap="goBack">
-      <text class="back-icon">←</text>
-    </view>
-    <text class="topbar-title">我的生肖</text>
-    <view class="topbar-right"></view>
-  </view>
-</view>
-
 <view class="container">
   <view class="header">
     <text class="title">选择您的出生年份</text>
