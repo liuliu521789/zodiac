@@ -1,95 +1,5 @@
 {
   "today": {
-    "date": "2026年5月24日",
-    "red_list": [
-      "龙",
-      "猴",
-      "牛"
-    ],
-    "black_list": [
-      "马",
-      "羊",
-      "兔"
-    ],
-    "zodiacs": {
-      "rat": {
-        "wealth": "财运平稳，宜理性消费",
-        "love": "感情稳定，适合与伴侣增进感情",
-        "health": "健康状况良好，注意休息",
-        "career": "事业运一般，宜稳扎稳打",
-        "luckyNumber": "",
-        "luckyColor": "",
-        "luckyDirection": "",
-        "luckyPerson": ""
-      },
-      "ox": null,
-      "tiger": {
-        "wealth": "财运平稳，宜理性消费",
-        "love": "感情稳定，适合与伴侣增进感情",
-        "health": "健康状况良好，注意休息",
-        "career": "事业运一般，宜稳扎稳打",
-        "luckyNumber": "",
-        "luckyColor": "",
-        "luckyDirection": "",
-        "luckyPerson": ""
-      },
-      "rabbit": {
-        "wealth": "财运平稳，宜理性消费",
-        "love": "感情稳定，适合与伴侣增进感情",
-        "health": "健康状况良好，注意休息",
-        "career": "事业运一般，宜稳扎稳打",
-        "luckyNumber": "",
-        "luckyColor": "",
-        "luckyDirection": "",
-        "luckyPerson": ""
-      },
-      "dragon": {
-        "wealth": "财运平稳，宜理性消费",
-        "love": "感情稳定，适合与伴侣增进感情",
-        "health": "健康状况良好，注意休息",
-        "career": "事业运一般，宜稳扎稳打",
-        "luckyNumber": "",
-        "luckyColor": "",
-        "luckyDirection": "",
-        "luckyPerson": ""
-      },
-      "snake": null,
-      "horse": {
-        "wealth": "财运平稳，宜理性消费",
-        "love": "感情稳定，适合与伴侣增进感情",
-        "health": "健康状况良好，注意休息",
-        "career": "事业运一般，宜稳扎稳打",
-        "luckyNumber": "",
-        "luckyColor": "",
-        "luckyDirection": "",
-        "luckyPerson": ""
-      },
-      "goat": {
-        "wealth": "财运平稳，宜理性消费",
-        "love": "感情稳定，适合与伴侣增进感情",
-        "health": "健康状况良好，注意休息",
-        "career": "事业运一般，宜稳扎稳打",
-        "luckyNumber": "",
-        "luckyColor": "",
-        "luckyDirection": "",
-        "luckyPerson": ""
-      },
-      "monkey": null,
-      "rooster": {
-        "wealth": "财运平稳，宜理性消费",
-        "love": "感情稳定，适合与伴侣增进感情",
-        "health": "健康状况良好，注意休息",
-        "career": "事业运一般，宜稳扎稳打",
-        "luckyNumber": "",
-        "luckyColor": "",
-        "luckyDirection": "",
-        "luckyPerson": ""
-      },
-      "dog": null,
-      "pig": null
-    }
-  },
-  "tomorrow": {
     "date": "2026年5月25日",
     "red_list": [
       "龙",
@@ -112,16 +22,7 @@
         "luckyDirection": "",
         "luckyPerson": ""
       },
-      "ox": {
-        "wealth": "财运平稳，宜理性消费",
-        "love": "感情稳定，适合与伴侣增进感情",
-        "health": "健康状况良好，注意休息",
-        "career": "事业运一般，宜稳扎稳打",
-        "luckyNumber": "",
-        "luckyColor": "",
-        "luckyDirection": "",
-        "luckyPerson": ""
-      },
+      "ox": null,
       "tiger": {
         "wealth": "财运平稳，宜理性消费",
         "love": "感情稳定，适合与伴侣增进感情",
@@ -197,8 +98,18 @@
       }
     }
   },
-  "month": {
-    "date": "2026年5月",
+  "tomorrow": {
+    "date": "2026年5月26日",
+    "red_list": [
+      "龙",
+      "猴",
+      "牛"
+    ],
+    "black_list": [
+      "马",
+      "羊",
+      "兔"
+    ],
     "zodiacs": {
       "rat": {
         "wealth": "财运平稳，宜理性消费",
@@ -210,8 +121,7 @@
         "luckyDirection": "",
         "luckyPerson": ""
       },
-      "ox": null,
-      "tiger": {
+      "ox": {
         "wealth": "财运平稳，宜理性消费",
         "love": "感情稳定，适合与伴侣增进感情",
         "health": "健康状况良好，注意休息",
@@ -221,6 +131,7 @@
         "luckyDirection": "",
         "luckyPerson": ""
       },
+      "tiger": null,
       "rabbit": {
         "wealth": "财运平稳，宜理性消费",
         "love": "感情稳定，适合与伴侣增进感情",
@@ -262,7 +173,16 @@
         "luckyDirection": "",
         "luckyPerson": ""
       },
-      "monkey": null,
+      "monkey": {
+        "wealth": "财运平稳，宜理性消费",
+        "love": "感情稳定，适合与伴侣增进感情",
+        "health": "健康状况良好，注意休息",
+        "career": "事业运一般，宜稳扎稳打",
+        "luckyNumber": "",
+        "luckyColor": "",
+        "luckyDirection": "",
+        "luckyPerson": ""
+      },
       "rooster": {
         "wealth": "财运平稳，宜理性消费",
         "love": "感情稳定，适合与伴侣增进感情",
@@ -277,5 +197,94 @@
       "pig": null
     }
   },
-  "last_updated": "2026-05-24T02:51:09.228351"
+  "month": {
+    "date": "2026年5月",
+    "zodiacs": {
+      "rat": {
+        "wealth": "财运平稳，宜理性消费",
+        "love": "感情稳定，适合与伴侣增进感情",
+        "health": "健康状况良好，注意休息",
+        "career": "事业运一般，宜稳扎稳打",
+        "luckyNumber": "",
+        "luckyColor": "",
+        "luckyDirection": "",
+        "luckyPerson": ""
+      },
+      "ox": null,
+      "tiger": {
+        "wealth": "财运平稳，宜理性消费",
+        "love": "感情稳定，适合与伴侣增进感情",
+        "health": "健康状况良好，注意休息",
+        "career": "事业运一般，宜稳扎稳打",
+        "luckyNumber": "",
+        "luckyColor": "",
+        "luckyDirection": "",
+        "luckyPerson": ""
+      },
+      "rabbit": {
+        "wealth": "财运平稳，宜理性消费",
+        "love": "感情稳定，适合与伴侣增进感情",
+        "health": "健康状况良好，注意休息",
+        "career": "事业运一般，宜稳扎稳打",
+        "luckyNumber": "",
+        "luckyColor": "",
+        "luckyDirection": "",
+        "luckyPerson": ""
+      },
+      "dragon": null,
+      "snake": {
+        "wealth": "财运平稳，宜理性消费",
+        "love": "感情稳定，适合与伴侣增进感情",
+        "health": "健康状况良好，注意休息",
+        "career": "事业运一般，宜稳扎稳打",
+        "luckyNumber": "",
+        "luckyColor": "",
+        "luckyDirection": "",
+        "luckyPerson": ""
+      },
+      "horse": null,
+      "goat": {
+        "wealth": "财运平稳，宜理性消费",
+        "love": "感情稳定，适合与伴侣增进感情",
+        "health": "健康状况良好，注意休息",
+        "career": "事业运一般，宜稳扎稳打",
+        "luckyNumber": "",
+        "luckyColor": "",
+        "luckyDirection": "",
+        "luckyPerson": ""
+      },
+      "monkey": {
+        "wealth": "财运平稳，宜理性消费",
+        "love": "感情稳定，适合与伴侣增进感情",
+        "health": "健康状况良好，注意休息",
+        "career": "事业运一般，宜稳扎稳打",
+        "luckyNumber": "",
+        "luckyColor": "",
+        "luckyDirection": "",
+        "luckyPerson": ""
+      },
+      "rooster": {
+        "wealth": "财运平稳，宜理性消费",
+        "love": "感情稳定，适合与伴侣增进感情",
+        "health": "健康状况良好，注意休息",
+        "career": "事业运一般，宜稳扎稳打",
+        "luckyNumber": "",
+        "luckyColor": "",
+        "luckyDirection": "",
+        "luckyPerson": ""
+      },
+      "dog": null,
+      "pig": {
+        "wealth": "财运平稳，宜理性消费",
+        "love": "感情稳定，适合与伴侣增进感情",
+        "health": "健康状况良好，注意休息",
+        "career": "事业运一般，宜稳扎稳打",
+        "luckyNumber": "",
+        "luckyColor": "",
+        "luckyDirection": "",
+        "luckyPerson": ""
+      }
+    }
+  },
+  "last_updated": "2026-05-25T03:25:56.288204"
 }
